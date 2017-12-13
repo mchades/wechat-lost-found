@@ -1,0 +1,20 @@
+<!--detail.wxml-->
+<view class="title">
+  <view class="word">丢失|手表一个</view> 
+  <view class="s-title">
+  2017-08-02  20:44
+  </view>
+  <view class="lpading">
+    <text class="resolve">未解决</text>
+  </view>
+</view>
+
+<view class="description">
+丢失了如图手表，丢失时间18.30从二食堂三楼办公室到21.30从17号楼实验室，表带棕色的ck手表，希望拾到的小伙伴联系13773679423，谢谢大家
+</view>
+
+<view class="pics">
+<image class="pic" src="../image/psb.jpg" mode="widthFix"></image>
+<image class="pic" src="../image/psb.jpg" mode="widthFix"></image>
+<image class="pic" src="../image/psb.jpg" mode="widthFix"></image>
+</view>

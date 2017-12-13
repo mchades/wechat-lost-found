@@ -1,0 +1,38 @@
+/* issue.wxss */
+.option-kind{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.title{
+  background-color: #EEEEEE;
+  padding: 6px;
+  font-size:16px;
+}
+
+.intitle{
+  padding-left: 6px;
+  padding-top: 6px;
+}
+
+.picNote{
+  background-color: #EEEEEE;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6px; 
+}
+.uploadPic{
+  width: 100rpx;
+  height: 110rpx;
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+}
+.issue{
+  background-color: #07C62D;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

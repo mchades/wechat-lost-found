@@ -1,0 +1,41 @@
+<!--issue.wxml-->
+<view>
+  <view class="title">
+  请选择发布信息类型
+  </view>
+  <radio-group class="option-kind" bindchange="radioChange">
+    <radio value="丢失">失物</radio>
+    <radio value="拾到">拾物</radio>
+  </radio-group>
+</view>
+
+<view class="title">
+描述物品数量和名称
+</view>
+
+<view class="intitle">
+  <input placeholder="输入标题（20字以内）例：一张校园卡" confirmtype="next" maxlength="20" bindblur='setTitle'>
+  </input>
+</view>
+
+<view class="title">
+请详细描述物品信息、时间地点、联系方式等
+</view>
+
+<view class="intitle">
+  <textarea placeholder="请输入内容" maxlength='-1' bindblur='setDescription' >
+  </textarea>
+</view>
+
+<view class="picNote">
+  <view>
+    <text class="upload-pic">上传图片</text>
+  </view>
+  <text>{{picNum}}/5</text>
+</view>
+
+<image wx:for="{{newInfo.pic}}" class="uploadPic" src="{{item}}" ></image>
+<image class="uploadPic" mode='aspectFit' src='../image/addPic.png' bindtap='chooseImg'></image>
+
+
+<button class="issue" form-type="submit" bindtap='issue' >发布</button>

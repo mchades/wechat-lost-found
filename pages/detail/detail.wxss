@@ -1,0 +1,28 @@
+/* detail.wxss */
+.word{
+  padding: 12px 6px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.lpading{
+  padding: 6px;
+}
+
+.description{
+  padding: 12px 6px;
+  line-height: 1.5;
+}
+
+.pics{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 12px 6px;
+  
+}
+
+.pic{
+  width: 200rpx;
+  margin-left: 6px;
+}

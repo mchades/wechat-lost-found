@@ -1,0 +1,42 @@
+<!--vip.wxml-->
+<view>
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+
+  <view class="s-title">
+  <text>我发布过的信息</text>
+</view>
+
+<view class="about-info top-border" bindtap="todetail">
+  <view class="list_left">
+    <view class="subtitle">
+      <view class="word">丢失|李明皇的校园卡</view> 
+      <text class="resolve">已解决</text>
+    </view>
+    <view class="s-title">
+    2017-08-02  20:44
+    </view>
+  </view>
+  <view class="list_right">
+  <image class="pic" src="../image/logo.jpg"></image>
+  </view>
+</view>
+
+<view class="about-info top-border">
+  <view class="list_left">
+    <view class="subtitle">
+      <view class="word">拾到|莫文隋的帽子</view> 
+      <text class="unresolve">未解决</text>
+    </view>
+    <view class="s-title">
+    2017-08-02  20:44
+    </view>
+  </view>
+  <view class="list_right">
+  <image class="pic" src="../image/hat.png"></image>
+  </view>
+</view>
+
+</view>

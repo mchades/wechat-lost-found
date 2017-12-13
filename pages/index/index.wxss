@@ -1,0 +1,72 @@
+ /**index.wxss**/
+
+ .issueinfo{
+     display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .issueinfo-avatar{
+  width: 130rpx;
+  height: 130rpx;
+  margin: 50rpx;
+  border-radius: 50%;
+  margin-top: 100rpx;
+  margin-bottom: 10rpx;
+ }
+
+ .issueinfo-tip{
+    color: #F7F7F7;
+    font-size: 24rpx;
+ }
+
+.index_hd{
+  text-align: center;
+  background-color: #07C62D;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+}
+
+.search{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  width: 250px;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.subtitle{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.about-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 6px 6px;
+  padding-top: 6px;
+}
+
+.pic{
+  width: 110rpx;
+  height: 80rpx;
+}
+
+.top-border{
+  border-top: 1px #aaa solid;
+}
+
+.s-title{
+  color: #aaa;
+  margin-top: 6px;
+  font-size: 12px;
+}

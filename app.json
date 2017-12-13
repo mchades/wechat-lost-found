@@ -1,0 +1,40 @@
+{
+  "pages": 
+  [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/issue/issue",
+    "pages/detail/detail",
+    "pages/user/user",
+    "pages/vip/vip"
+  ],
+  "window": 
+  {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#07C62D",
+    "navigationBarTitleText": "莫文隋失物招领",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar":
+  {
+    "color":"#a9b7b7",
+    "selectorColor":"#11cd6e",
+    "borderStyle": "white",
+    "list":
+    [
+      {
+        "selectedIconPath":"pages/image/home2.png",
+        "iconPath":"pages/image/home1.png",
+        "pagePath":"pages/index/index",
+        "text":"首页"
+      },
+      {
+        "selectedIconPath": "pages/image/user2.png",
+        "iconPath": "pages/image/user1.png",
+        "pagePath": "pages/user/user",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "debug": "true"
+}

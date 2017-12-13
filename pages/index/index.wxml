@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<import src="template/info_list.wxml"/>
+
+<view class="index_hd">
+
+  <view class="issueinfo" bindtap="toissue">
+    <image class= "issueinfo-avatar" src="../image/logo.jpg"></image>
+    <text class="issueinfo-tip">点击图标发布信息</text>
+  </view>
+
+  <view class="search">
+      <icon type="search" />
+      <input placeholder="请输入搜索关键字" confirmtype="search" confirmhold="true">
+      </input>
+  </view>
+  
+</view>
+
+<view class="s-title">
+  <text>最新失物招领信息</text>
+</view>
+
+<view class="info-list">
+<template is="infoList" data="{{infoList}}"/>
+</view>
+
+<view class='top-border s-title'>没有更多内容了</view>

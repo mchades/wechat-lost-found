@@ -1,0 +1,18 @@
+<!--user.wxml-->
+<view>
+  <view class="userinfo" bindtap='regiser'>
+    <image wx:if="{{granted}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <image wx:else class="userinfo-avatar" src="../image/logo2.jpg" background-size="cover"></image>
+
+    <view class="note">
+      <block wx:if="{{granted}}">
+        <text class="register">{{userInfo.nickName}}</text>
+        <text class="register-tip">可在首页发布信息</text>
+      </block>
+      <block wx:else>
+        <text class="register">授权登录</text>
+        <text class="register-tip">登录后可发布信息</text>
+      </block>
+    </view>
+  </view>
+</view>

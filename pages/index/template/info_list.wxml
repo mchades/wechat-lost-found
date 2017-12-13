@@ -1,0 +1,20 @@
+<template name="infoList">
+  <block wx:for="{{infoList}}" wx:key="index">
+    <view class="about-info top-border" bindtap="todetail">
+      <view class="list_left">
+        <view class="subtitle">
+          <view class="word">{{item.infoType}}|{{item.subtitle}}
+            <text wx:if="{{item.state=='已解决'}}" class="resolve">{{item.state}}</text>
+            <text wx:else class="unresolve">{{item.state}}</text>
+          </view>
+        </view>
+        <view class="s-title">
+          {{item.date}}
+        </view>
+      </view>
+      <view class="list_right">
+        <image class="pic" src="{{item.pic[0]}}"></image>
+      </view>
+    </view>
+  </block>
+</template>
