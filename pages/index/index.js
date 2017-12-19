@@ -31,9 +31,15 @@ Page({
       url: '../issue/issue'
     })
   },
-  todetail: function () {
+  todetail: function (e) {    
+    let infoType = e.currentTarget.dataset.infoType;
+    let subtitle = '&subtitle='+ e.currentTarget.dataset.subtitle;
+    let date = '&date=' + e.currentTarget.dataset.date;
+    let state = '&state='+e.currentTarget.dataset.state;
+    let pic = '&pic='+e.currentTarget.dataset.pic;
+    let description = '&description='+e.currentTarget.dataset.description;
     wx.navigateTo({
-      url: '../detail/detail'
+      url: '../detail/detail?infoType=' + infoType + subtitle + date + state + pic + description
     })
   },
   onLoad: function (){

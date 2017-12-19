@@ -1,11 +1,11 @@
 <!--detail.wxml-->
 <view class="title">
-  <view class="word">丢失|手表一个</view> 
+  <view class="word">{{info.infoType}}|{{info.subtitle}}</view> 
   <view class="s-title">
-  2017-08-02  20:44
+  {{info.date}}
   </view>
   <view class="lpading">
-    <text class="resolve">未解决</text>
+    <text class="resolve">{{info.state}}</text>
   </view>
 </view>
 
