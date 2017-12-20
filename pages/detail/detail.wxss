@@ -26,3 +26,19 @@
   width: 200rpx;
   margin-left: 6px;
 }
+
+.s-title{
+  color: #aaa;
+  margin-top: 6px;
+  margin-left: 6px;
+  font-size: 12px;
+}
+
+.report{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 12px;
+  color: #aaa;
+  margin-right: 6px;
+}

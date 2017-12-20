@@ -1,5 +1,6 @@
 // issue.js
 var util=require('../../utils/util.js');
+var app=getApp();
 Page({
 
   /**
@@ -7,7 +8,9 @@ Page({
    */
   data: {
     picNum:0,
-    newInfo: { state: "未解决"}
+    newInfo: { 
+      state: "未解决"
+    }
   },
   // 上传图片
   chooseImg:function(){
@@ -46,13 +49,15 @@ Page({
     //获取发布时间
     var time=util.formatTime(new Date());
     this.setData({
-      'newInfo.date': time
+      'newInfo.date': time,
+      'newInfo.author': app.globalData.userInfo.nickName
     })
     //将发布信息传到首页
     var that=this
-    let pages=getCurrentPages()
-    let prePage=pages[pages.length-2]
-    let preInfo=prePage.data.infoList
+    let pages = getCurrentPages()
+    let prePage = pages[pages.length - 2]
+    let preInfo = prePage.data.infoList
+    let author = prePage.data.infoList
     preInfo.unshift(that.data.newInfo)
     prePage.setData({
       infoList: preInfo

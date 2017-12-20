@@ -1,6 +1,6 @@
 <template name="infoList">
   <block wx:for="{{infoList}}" wx:key="index">
-    <view class="about-info top-border" bindtap="todetail" data-subtitle="{{item.subtitle}}" data-info-type="{{item.infoType}}" data-date="{{item.date}}" data-state="{{item.state}}" data-pic="{{item.pic}}" data-description='{{item.description}}'>
+    <view class="about-info top-border" bindtap="todetail" data-subtitle="{{item.subtitle}}" data-info-type="{{item.infoType}}" data-date="{{item.date}}" data-state="{{item.state}}" data-pic="{{item.pic}}" data-description='{{item.description}}' data-author='{{item.author}}'>
       <view class="list_left">
         <view class="subtitle">
           <view class="word">{{item.infoType}}|{{item.subtitle}}
@@ -9,7 +9,7 @@
           </view>
         </view>
         <view class="s-title">
-          {{item.date}}
+          {{item.date}}<text class='author'>{{item.author}}</text>         
         </view>
       </view>
       <view class="list_right">

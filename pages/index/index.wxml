@@ -10,8 +10,8 @@
 
   <view class="search">
       <icon type="search" />
-      <input placeholder="请输入搜索关键字" confirmtype="search" confirmhold="true">
-      </input>
+      <text>输入搜索关键字</text>
+      <text></text>
   </view>
   
 </view>

@@ -35,6 +35,8 @@
 .search{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  color: #aaa;
   background-color: #fff;
   width: 250px;
   margin-top: 30rpx;
@@ -68,5 +70,6 @@
 .s-title{
   color: #aaa;
   margin-top: 6px;
+  margin-left: 6px;
   font-size: 12px;
 }

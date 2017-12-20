@@ -19,3 +19,6 @@
   color: #aaa;
 }
 
+.author{
+  margin-left: 12px;
+}

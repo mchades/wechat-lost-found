@@ -1,20 +1,21 @@
 <!--detail.wxml-->
 <view class="title">
-  <view class="word">{{info.infoType}}|{{info.subtitle}}</view> 
+  <view class="word">{{info.infoType}}|{{info.subtitle}}
+    <text wx:if="{{info.state=='已解决'}}" class="resolve">{{info.state}}</text>
+    <text wx:else class="unresolve">{{info.state}}</text>
+  </view> 
   <view class="s-title">
-  {{info.date}}
-  </view>
-  <view class="lpading">
-    <text class="resolve">{{info.state}}</text>
+  {{info.date}} <text class='author'>{{info.author}}</text> 
   </view>
 </view>
 
-<view class="description">
-丢失了如图手表，丢失时间18.30从二食堂三楼办公室到21.30从17号楼实验室，表带棕色的ck手表，希望拾到的小伙伴联系13773679423，谢谢大家
+<view wx:if="{{info.description !== undefined}}" class="description">
+{{info.description}}
 </view>
 
-<view class="pics">
-<image class="pic" src="../image/psb.jpg" mode="widthFix"></image>
-<image class="pic" src="../image/psb.jpg" mode="widthFix"></image>
-<image class="pic" src="../image/psb.jpg" mode="widthFix"></image>
+<view class="pics" wx:if="{{info.pic.length !==1}}">
+<image wx:for="{{info.pic}}" class="pic" src="{{item}}" mode='aspectFit'></image>
+</view>
+<view class='report'>
+<text>举报</text>
 </view>

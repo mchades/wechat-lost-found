@@ -13,8 +13,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    options.pic=options.pic.split(",")
     this.setData({
-      info:options
+      info:options,      
     })
     console.log(this.data)
   },
