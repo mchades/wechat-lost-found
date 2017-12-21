@@ -2,8 +2,9 @@
   <block wx:for="{{infoList}}" wx:key="index">
     <view class="about-info top-border" bindtap="todetail" data-subtitle="{{item.subtitle}}" data-info-type="{{item.infoType}}" data-date="{{item.date}}" data-state="{{item.state}}" data-pic="{{item.pic}}" data-description='{{item.description}}' data-author='{{item.author}}'>
       <view class="list_left">
-        <view class="subtitle">
-          <view class="word">{{item.infoType}}|{{item.subtitle}}
+        <view class="list_right">
+          <view class='word'>
+            <text>{{item.infoType}}|{{item.subtitle}}</text>
             <text wx:if="{{item.state=='已解决'}}" class="resolve">{{item.state}}</text>
             <text wx:else class="unresolve">{{item.state}}</text>
           </view>

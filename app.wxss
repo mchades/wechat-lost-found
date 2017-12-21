@@ -22,3 +22,25 @@
 .author{
   margin-left: 12px;
 }
+.s-title{
+  color: #aaa;
+  margin-top: 6px;
+  margin-left: 6px;
+  font-size: 12px;
+}
+.pic{
+  width: 110rpx;
+  height: 80rpx;
+}
+
+.about-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 6px 6px;
+  padding-top: 6px;
+}
+
+.top-border{
+  border-top: 1px #aaa solid;
+}

@@ -9,7 +9,10 @@ Page({
   data: {
     picNum:0,
     newInfo: { 
-      state: "未解决"
+      state: "未解决",
+      subtitle:"",
+      description:"",
+      infoType:""
     }
   },
   // 上传图片
@@ -46,25 +49,51 @@ Page({
 
   //点击发布
   issue(){
-    //获取发布时间
-    var time=util.formatTime(new Date());
-    this.setData({
-      'newInfo.date': time,
-      'newInfo.author': app.globalData.userInfo.nickName
-    })
-    //将发布信息传到首页
-    var that=this
-    let pages = getCurrentPages()
-    let prePage = pages[pages.length - 2]
-    let preInfo = prePage.data.infoList
-    let author = prePage.data.infoList
-    preInfo.unshift(that.data.newInfo)
-    prePage.setData({
-      infoList: preInfo
-    })
-    wx.navigateBack()
-    console.log(preInfo)
+    //判断信息是否填写完整
+    if (this.data.newInfo.infoType === ""){
+      wx.showToast({
+        title: '请选择信息类型',
+        image: '../image/warn.png',
+        duration: 2000
+      })
+    } else if (this.data.newInfo.subtitle === ""){
+      wx.showToast({
+        title: '请填写信息标题',
+        image: '../image/warn.png',
+        duration: 2000
+      })
+    } else if (this.data.newInfo.description === ""){
+      wx.showToast({
+        title: '请填写信息内容',
+        image: '../image/warn.png',
+        duration: 2000
+      })
+    }else{
+      //获取发布时间
+      var time = util.formatTime(new Date());
+      this.setData({
+        'newInfo.date': time,
+        'newInfo.author': app.globalData.userInfo.nickName
+      })
+      //将发布信息传到首页
+      var that = this
+      let pages = getCurrentPages()
+      let prePage = pages[pages.length - 2]
+      let preInfo = prePage.data.infoList
+      let author = prePage.data.infoList
+      if (this.data.picNum === 0){
+        this.setData({
+          'newInfo.pic': ["../image/logo.jpg"],
+        })
+      }
+      preInfo.unshift(that.data.newInfo)
+      prePage.setData({
+        infoList: preInfo
+      })
+      wx.navigateBack()
+      console.log(preInfo)
     // console.log(data.newInfo)
+    }    
   },
 
   /**

@@ -5,7 +5,7 @@ Page({
   data: {
     resolve:"已解决",
     infoList:[{
-      subtitle:"在风雨操场丢了钱包一个校园卡一张",
+      subtitle:"在操场丢了钱包一个校园卡一",
       infoType:"丢失",
       state:"已解决",
       author:"小明",
@@ -31,9 +31,17 @@ Page({
   },
   //跳转到信息发布页
   toissue:function() {
-    wx.navigateTo({
-      url: '../issue/issue'
-    })
+    if (app.globalData.userInfo === null){
+      wx.showToast({
+        title: '请先登录',
+        image:'../image/warn.png',
+        duration: 2000
+      })
+    }else{
+      wx.navigateTo({
+        url: '../issue/issue'
+      })
+    }    
   },
   //跳转到信息详情页
   todetail: function (e) {    

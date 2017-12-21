@@ -10,6 +10,25 @@ Page({
   data: {
     userInfo: {},
     granted: false,
+    resolve: "已解决",
+    infoList: [{
+      subtitle: "在操场丢了钱包一个校园卡一",
+      infoType: "丢失",
+      state: "已解决",
+      author: "McHades",
+      date: "2017-08-20",
+      description: "数计学院校园卡如图所示，失主请联系1200202124**",
+      pic: ["../image/logo.jpg"]
+    }, {
+      subtitle: "在风雨操场捡到帽子",
+      infoType: "拾到",
+      state: "未解决",
+      author: "McHades",
+      date: "2017-08-20 17：23",
+      description: "在风雨操场的东边捡到傻帽一顶，放在主席台旁边请自己去拿",
+      pic: ["../image/hat.png"]
+    }
+    ]
   },
 
   /**
