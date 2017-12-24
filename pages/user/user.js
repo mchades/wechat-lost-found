@@ -8,8 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
     granted: false,
+    note: '登录后可发布信息',
+    userInfo: {
+      nickName: '授权登录'
+    },
     resolve: "已解决",
     infoList: [{
       subtitle: "在操场丢了钱包一个校园卡一",
@@ -36,18 +39,69 @@ Page({
    */
   onLoad: function (options) {
     console.log('onload')
+
   },
   regiser: function () {
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
+    if (app.globalData.userInfo) {
       that.setData({
         userInfo: userInfo,
         granted: true,
+        note: '点击首页图标发布信息'
       })
-    })
-    
+    } else {
+      wx.login({
+        success: function (res) {
+          console.log(res.code)
+          if (res.code) {
+            //发起网络请求
+            wx.request({
+              method: "post",
+              url: 'https://172.17.174.220:443/LostAndFound/onMessage',
+              data: {
+                js_code: res.code,
+                appid: 'wxb00fd2d44e2450a9',
+                appSecret: 'd071b4bbe0bb76be90831ad95c5c966d',
+                session_key: '',
+                openID: 'oe9QO0dt18vMu1UmgGi6Xb2UvPaE',
+              },
+              header: {
+                'content-Type': 'application/json',
+                'charset': 'UTF - 8'
+              },
+              success: function (res) {
+                console.log(res)
+                app.getUserInfo(function (userInfo) {
+                  //更新数据
+                  that.setData({
+                    userInfo: userInfo,
+                    granted: true,
+                    note: '点击首页图标发布信息'
+                  })
+                  app.globalData.granted = true;
+                })
+              }
+            })
+          } else {
+            console.log('获取用户登录态失败！' + res.errMsg)
+          }
+        }
+      })
+    }
+
+
+
+    //调用应用实例的方法获取全局数据
+    // app.getUserInfo(function (userInfo) {
+    //   //更新数据
+    //   that.setData({
+    //     userInfo: userInfo,
+    //     granted: true,
+    //     note:'点击首页图标发布信息'
+    //   })
+    //   app.globalData.granted=true;
+    // })
+
   },
 
   /**
@@ -70,6 +124,7 @@ Page({
    */
   onShow: function () {
     console.log(this.data.userInfo)
+    console.log(app.globalData)
   },
 
   /**

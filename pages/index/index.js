@@ -3,6 +3,12 @@
 var app = getApp()
 Page({
   data: {
+    searching:false,
+    keyword:'',
+    confirmSearch:false,
+    resultNum:0,
+    serchInfo:[],
+    allInfo:[],
     resolve:"已解决",
     infoList:[{
       subtitle:"在操场丢了钱包一个校园卡一",
@@ -43,6 +49,44 @@ Page({
       })
     }    
   },
+  //显示搜索页
+  showSearch:function(){
+    this.setData({
+      searching:true
+    })
+  },
+  //取消搜索
+  cancel:function(){
+    this.setData({
+      searching: false,
+      confirmSearch: false,
+      //infoList: this.data.allInfo
+    })
+  },
+  //开始搜索
+  search:function(e){
+    wx.request({
+      method: "post",
+      url: 'https://172.17.174.220:443/LostAndFound/search',
+      data: {
+        keyword: '裤子',
+      },
+      header: {
+        'content-Type': 'application/json',
+        'charset': 'UTF - 8'
+      },
+      success: function (res) {
+        /* res.data的内容为ok */
+        this.setData({
+          infoList: res.data,
+          confirmSearch:true,
+          resultNum: res.data.length
+        })
+        console.log(res.data);  //data
+        console.log(resultNum);
+      }
+    })
+  },
   //跳转到信息详情页
   todetail: function (e) {    
     let infoType = e.currentTarget.dataset.infoType;
@@ -59,6 +103,9 @@ Page({
   onLoad: function (){
     console.log('onLoad')
     console.log(this.data.userInfo)
+    this.setData({
+      infoList: app.globalData.allInfo
+    })
   },
   onShow:function(){
     console.log(this.data.userInfo)

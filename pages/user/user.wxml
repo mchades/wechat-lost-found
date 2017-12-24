@@ -7,14 +7,8 @@
     <image wx:else class="userinfo-avatar" src="../image/logo2.jpg" background-size="cover"></image>
 
     <view class="note">
-      <block wx:if="{{granted}}">
         <text class="register">{{userInfo.nickName}}</text>
-        <text class="register-tip">可在首页发布信息</text>
-      </block>
-      <block wx:else>
-        <text class="register">授权登录</text>
-        <text class="register-tip">登录后可发布信息</text>
-      </block>
+        <text class="register-tip">{{note}}</text>
     </view>
   </view>
 </view>
@@ -26,10 +20,9 @@
   <view class="info-list">
     <template is="infoList" data="{{infoList}}" />
   </view>
-
   <view class='top-border s-title'>没有更多内容了</view>
-
 </block>
+
 <block wx:else>
   <view class='none'>
     <image src='../image/none.png' mode='aspectFit' class='image'></image>

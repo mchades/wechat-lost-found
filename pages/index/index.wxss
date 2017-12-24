@@ -50,9 +50,26 @@
   align-content: flex-start;
 }
 
- .word{
+.search-page{
   display: flex;
-  flex-wrap: wrap;
-} 
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #07C62D;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-bottom: 20rpx;
+}
 
+.search-left{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #fff;
+  font-size: 12px;
+  width: 85%;
+}
+
+.search-right{
+  color: #fff;
+}
 

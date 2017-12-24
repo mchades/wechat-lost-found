@@ -3,10 +3,27 @@ App
 (
   {
   onLaunch: function(){
+    var that = this
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    //加载数据
+    wx.request({
+      method: "post",
+      url: 'https://172.17.174.220:443/LostAndFound/returnAll',
+      header: {
+        'content-Type': 'application/json',
+        'charset': 'UTF - 8'
+      },
+      data: {},
+      success: function (res) {
+        /* res.data的内容为ok */
+        that.globalData.allInfo=res.data,
+        console.log(res.data);  //data
+        console.log(that.globalData.allInfo)
+      }
+    })
   },
 
   getUserInfo: function(cb){
@@ -29,6 +46,9 @@ App
 
   globalData: 
   {
+    note: '登录后可发布信息',
+    granted:false,
+    allInfo:[],
     userInfo: null
   }
 })
