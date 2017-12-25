@@ -14,24 +14,7 @@ Page({
       nickName: '授权登录'
     },
     resolve: "已解决",
-    infoList: [{
-      subtitle: "在操场丢了钱包一个校园卡一",
-      infoType: "丢失",
-      state: "已解决",
-      author: "McHades",
-      date: "2017-08-20",
-      description: "数计学院校园卡如图所示，失主请联系1200202124**",
-      pic: ["../image/logo.jpg"]
-    }, {
-      subtitle: "在风雨操场捡到帽子",
-      infoType: "拾到",
-      state: "未解决",
-      author: "McHades",
-      date: "2017-08-20 17：23",
-      description: "在风雨操场的东边捡到傻帽一顶，放在主席台旁边请自己去拿",
-      pic: ["../image/hat.png"]
-    }
-    ]
+    infoList: []
   },
 
   /**
@@ -41,23 +24,23 @@ Page({
     console.log('onload')
 
   },
+  //点击授权登陆
   regiser: function () {
     var that = this
     if (app.globalData.userInfo) {
-      that.setData({
-        userInfo: userInfo,
-        granted: true,
-        note: '点击首页图标发布信息'
-      })
+
     } else {
+      wx.showLoading({
+        title: '正在登录',
+      })
       wx.login({
         success: function (res) {
-          console.log(res.code)
+          console.log('login success' + res.code)
           if (res.code) {
             //发起网络请求
             wx.request({
               method: "post",
-              url: 'https://172.17.174.220:443/LostAndFound/onMessage',
+              url: 'https://172.25.50.90:443/LostAndFound/onMessage',
               data: {
                 js_code: res.code,
                 appid: 'wxb00fd2d44e2450a9',
@@ -70,38 +53,34 @@ Page({
                 'charset': 'UTF - 8'
               },
               success: function (res) {
+                console.log('拉取个人信息成功')
                 console.log(res)
                 app.getUserInfo(function (userInfo) {
                   //更新数据
                   that.setData({
                     userInfo: userInfo,
                     granted: true,
-                    note: '点击首页图标发布信息'
+                    note: '点击首页图标发布信息',
+                    infoList: res.data.case
                   })
                   app.globalData.granted = true;
+                  app.globalData.openid = res.data.openid;
+                  wx.hideLoading()
                 })
+              },
+              fail: function (res) {
+                console.log('个人信息请求失败' + res.errMsg)
               }
             })
           } else {
-            console.log('获取用户登录态失败！' + res.errMsg)
+            console.log('没有获取到code' + res)
           }
+        },
+        fail: function (res) {
+          console.log('login failed' + res.code)
         }
       })
     }
-
-
-
-    //调用应用实例的方法获取全局数据
-    // app.getUserInfo(function (userInfo) {
-    //   //更新数据
-    //   that.setData({
-    //     userInfo: userInfo,
-    //     granted: true,
-    //     note:'点击首页图标发布信息'
-    //   })
-    //   app.globalData.granted=true;
-    // })
-
   },
 
   /**
@@ -111,20 +90,48 @@ Page({
 
   },
   /**
-   * 点击授权登录按钮
-   */
-  toVip: function () {
-    wx.navigateTo
-      ({
-        url: '../vip/vip'
-      })
-  },
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(this.data.userInfo)
-    console.log(app.globalData)
+    var that = this
+    if (!app.globalData.userLatest) {
+      wx.request({
+        method: "post",
+        url: 'https://172.25.50.90:443/LostAndFound/refresh',
+        data: {
+          openID: app.globalData.openid,
+        },
+        header: {
+          'content-Type': 'application/json',
+          'charset': 'UTF - 8'
+        },
+        success: function (res) {
+          that.setData({
+            infoList: res.data,
+          })
+          app.globalData.userLatest = true
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log('个人信息请求失败' + res.errMsg)
+        }
+      })
+    }
+  },
+  //跳转到信息详情页
+  todetail: function (e) {
+    let infoType = e.currentTarget.dataset.infoType;
+    let subtitle = '&subtitle=' + e.currentTarget.dataset.subtitle;
+    let date = '&date=' + e.currentTarget.dataset.date;
+    let state = '&state=' + e.currentTarget.dataset.state;
+    let pic = '&pic=' + e.currentTarget.dataset.pic;
+    let description = '&description=' + e.currentTarget.dataset.description;
+    let author = '&author=' + e.currentTarget.dataset.author;
+    let num = '&num=' + e.currentTarget.dataset.num;
+    let openid = '&openid=' + e.currentTarget.dataset.openid;
+    wx.navigateTo({
+      url: '../detail/detail?infoType=' + infoType + subtitle + date + state + pic + description + author + num + openid
+    })
   },
 
   /**

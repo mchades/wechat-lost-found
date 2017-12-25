@@ -18,12 +18,11 @@
     </view>
     <view wx:else class='searchList'>
       <view class="s-title">
-        <text>最新失物招领信息</text>
+        <text>搜索结果</text>
       </view>
       <view class="info-list">
         <template is="infoList" data="{{infoList}}" />
       </view>
-      <view class='top-border s-title'>没有更多内容了</view>
     </view>
   </view>
 </view>
@@ -50,6 +49,4 @@
   <view class="info-list">
     <template is="infoList" data="{{infoList}}" />
   </view>
-
-  <view class='top-border s-title'>没有更多内容了</view>
 </view>

@@ -1,6 +1,6 @@
 <template name="infoList">
   <block wx:for="{{infoList}}" wx:key="index">
-    <view class="about-info top-border" bindtap="todetail" data-subtitle="{{item.subtitle}}" data-info-type="{{item.infoType}}" data-date="{{item.date}}" data-state="{{item.state}}" data-pic="{{item.pic}}" data-description='{{item.description}}' data-author='{{item.author}}'>
+    <view class="about-info top-border" bindtap="todetail" data-subtitle="{{item.subtitle}}" data-info-type="{{item.infoType}}" data-date="{{item.date}}" data-state="{{item.state}}" data-pic="{{item.pic}}" data-description='{{item.description}}' data-author='{{item.author}}' data-num='{{item.number}}' data-openid='{{item.openid}}'>
       <view class="list_left">
         <view class="list_right">
           <view class='word'>
@@ -18,4 +18,5 @@
       </view>
     </view>
   </block>
+  <view class='top-border s-title'>没有更多内容了</view>
 </template>

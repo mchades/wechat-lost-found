@@ -26,21 +26,24 @@
 .unresolve{
  border: red solid 1px;
  color: red; 
+ font-size: 16px;
 }
 
 .resolve{
   border: #aaa solid 1px;
   color: #aaa;
+  font-size: 16px;
 }
 
 .author{
   margin-left: 12px;
 }
 .s-title{
+  display: flex;
   color: #aaa;
   margin-top: 6px;
   margin-left: 6px;
-  font-size: 12px;
+  font-size: 10px;
 }
 .pic{
   width: 110rpx;

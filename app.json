@@ -5,15 +5,14 @@
     "pages/logs/logs",
     "pages/issue/issue",
     "pages/detail/detail",
-    "pages/user/user",
-    "pages/vip/vip"
+    "pages/user/user"
   ],
   "window": 
   {
-    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#07C62D",
     "navigationBarTitleText": "莫文隋失物招领",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f2f7f3"
   },
   "tabBar":
   {

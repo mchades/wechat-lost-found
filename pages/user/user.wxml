@@ -5,10 +5,9 @@
   <view class="userinfo" bindtap='regiser'>
     <image wx:if="{{granted}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <image wx:else class="userinfo-avatar" src="../image/logo2.jpg" background-size="cover"></image>
-
     <view class="note">
-        <text class="register">{{userInfo.nickName}}</text>
-        <text class="register-tip">{{note}}</text>
+      <text class="register">{{userInfo.nickName}}</text>
+      <text class="register-tip">{{note}}</text>
     </view>
   </view>
 </view>
@@ -20,7 +19,6 @@
   <view class="info-list">
     <template is="infoList" data="{{infoList}}" />
   </view>
-  <view class='top-border s-title'>没有更多内容了</view>
 </block>
 
 <block wx:else>

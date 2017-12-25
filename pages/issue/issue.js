@@ -73,26 +73,55 @@ Page({
       var time = util.formatTime(new Date());
       this.setData({
         'newInfo.date': time,
+        'newInfo.openid': app.globalData.openid,
         'newInfo.author': app.globalData.userInfo.nickName
       })
-      //将发布信息传到首页
+      //无图片则设置默认图片
       var that = this
-      let pages = getCurrentPages()
-      let prePage = pages[pages.length - 2]
-      let preInfo = prePage.data.infoList
-      let author = prePage.data.infoList
       if (this.data.picNum === 0){
         this.setData({
           'newInfo.pic': ["../image/logo.jpg"],
         })
       }
+      //将发布信息添加到首页消息列表中
+      app.globalData.userLatest=false
+      app.globalData.allInfo.unshift(that.data.newInfo)
+      let pages = getCurrentPages()
+      let prePage = pages[pages.length - 2]
+      let preInfo = prePage.data.infoList
       preInfo.unshift(that.data.newInfo)
       prePage.setData({
         infoList: preInfo
       })
-      wx.navigateBack()
-      console.log(preInfo)
-    // console.log(data.newInfo)
+      //同步至服务端
+      wx.request({
+        method: "post",
+        url: 'https://172.25.50.90:443/LostAndFound/addInform',
+        data: {
+          openID: 'oe9QO0dt18vMu1UmgGi6Xb2UvPaE',
+          session_key: '',
+          author: that.data.newInfo.author,
+          subtitle: that.data.newInfo.subtitle,
+          infoType: that.data.newInfo.infoType,
+          description: that.data.newInfo.description,
+          pic: that.data.newInfo.pic,
+          date: that.data.newInfo.date,
+          state: that.data.newInfo.state
+        },
+        header: {
+          'content-Type': 'application/json',
+          'charset': 'UTF - 8'
+        },
+        success: function (res) {
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 3000
+          })
+          wx.navigateBack()
+          console.log(res.data);  //data
+        }
+      })
     }    
   },
 
@@ -114,7 +143,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    //console.log(app.globalData.openid) 
   },
 
   /**

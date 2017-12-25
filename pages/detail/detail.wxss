@@ -42,3 +42,10 @@
   color: #aaa;
   margin-right: 6px;
 }
+
+.icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+  margin-right: 6px;
+}

@@ -11,7 +11,7 @@ App
     //加载数据
     wx.request({
       method: "post",
-      url: 'https://172.17.174.220:443/LostAndFound/returnAll',
+      url: 'https://172.25.50.90:443/LostAndFound/returnAll',
       header: {
         'content-Type': 'application/json',
         'charset': 'UTF - 8'
@@ -48,6 +48,9 @@ App
   {
     note: '登录后可发布信息',
     granted:false,
+    userLatest:true,
+    indexLates:true,
+    openid:'',
     allInfo:[],
     userInfo: null
   }

@@ -3,19 +3,24 @@
   <view class="word">{{info.infoType}}|{{info.subtitle}}
     <text wx:if="{{info.state=='已解决'}}" class="resolve">{{info.state}}</text>
     <text wx:else class="unresolve">{{info.state}}</text>
-  </view> 
+  </view>
   <view class="s-title">
-  {{info.date}} <text class='author'>{{info.author}}</text> 
+    {{info.date}}
+    <text class='author'>{{info.author}}</text>
+    <view wx:if="{{mine}}" class='icons'>
+      <image class='icon' src="../image/tag.png" bindtap='edit'/>
+      <image class='icon' src="../image/delete.png" bindtap='delete'/>
+    </view>
   </view>
 </view>
 
 <view wx:if="{{info.description !== undefined}}" class="description">
-{{info.description}}
+  {{info.description}}
 </view>
 
 <view class="pics" wx:if="{{info.pic.length !==1}}">
-<image wx:for="{{info.pic}}" class="pic" src="{{item}}" mode='aspectFit'></image>
+  <image wx:for="{{info.pic}}" wx:key="index" class="pic" src="{{item}}" mode='aspectFit'></image>
 </view>
 <view class='report'>
-<text>举报</text>
+  <text>举报</text>
 </view>
