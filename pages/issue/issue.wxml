@@ -31,11 +31,11 @@
   <view>
     <text class="upload-pic">上传图片</text>
   </view>
-  <text>{{picNum}}/5</text>
+  <text>{{picNum}}/1</text>
 </view>
 
-<image wx:for="{{newInfo.pic}}" class="uploadPic" src="{{item}}" ></image>
-<image class="uploadPic" mode='aspectFit' src='../image/addPic.png' bindtap='chooseImg'></image>
+<image wx:if="{{picNum}}" class="uploadPic" src="{{newInfo.pic}}" ></image>
+<image class="uploadPic" mode='aspectFit' src='../image/addPic.png' bindtap='didPressChooesImage'></image>
 
 
 <button class="issue" form-type="submit" bindtap='issue' >发布</button>

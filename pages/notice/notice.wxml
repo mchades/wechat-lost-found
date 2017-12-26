@@ -1,0 +1,15 @@
+<!--pages/notice/notice.wxml-->
+<view class='containt'>
+  <view class='bigTitle'>
+    <image class="logo" src="../image/logo.jpg"></image>
+    <text class='title'>公 告</text>
+  </view>
+  <textarea>
+    <text>{{"请文明发布信息，发布过的消息解决后请及时更改消息状态，禁止发布广告等其他垃圾信息，否则将被拉黑如有疑问请联系我们。"}}</text>
+    <textarea>
+      <text>联系电话{{"400-8208820"}}</text>
+      <textarea>地 址:{{"福州大学数计学院2号楼1013"}}</textarea>
+    </textarea>
+  </textarea>
+
+</view>

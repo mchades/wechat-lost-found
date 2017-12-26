@@ -18,9 +18,9 @@
   {{info.description}}
 </view>
 
-<view class="pics" wx:if="{{info.pic.length !==1}}">
-  <image wx:for="{{info.pic}}" wx:key="index" class="pic" src="{{item}}" mode='aspectFit'></image>
+<view class="pics" wx:if="{{info.pic}}">
+  <image class="pic" src="{{info.pic}}" mode='aspectFit'></image>
 </view>
 <view class='report'>
-  <text>举报</text>
+  <text bindtap=''>举报</text>
 </view>

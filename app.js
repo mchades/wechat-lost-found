@@ -3,6 +3,7 @@ App
 (
   {
   onLaunch: function(){
+    wx.showNavigationBarLoading()
     var that = this
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -11,7 +12,7 @@ App
     //加载数据
     wx.request({
       method: "post",
-      url: 'https://172.25.50.90:443/LostAndFound/returnAll',
+      url: 'https://172.17.174.142:443/LostAndFound/returnAll',
       header: {
         'content-Type': 'application/json',
         'charset': 'UTF - 8'
@@ -22,6 +23,13 @@ App
         that.globalData.allInfo=res.data,
         console.log(res.data);  //data
         console.log(that.globalData.allInfo)
+        wx.hideNavigationBarLoading()
+      },
+      fail:function(res){
+        wx.showToast({
+          title: '网络错误',
+          image: 'pages/image/warn.png'
+        })
       }
     })
   },
@@ -48,6 +56,7 @@ App
   {
     note: '登录后可发布信息',
     granted:false,
+    role:'',
     userLatest:true,
     indexLates:true,
     openid:'',

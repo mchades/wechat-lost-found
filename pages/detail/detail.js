@@ -25,15 +25,42 @@ Page({
       info: options,
       mine: mine
     })
-
   },
   //改变消息状态
   edit: function () {
+    var that=this
     wx.showModal({
       title: '提示',
-      content: '消息状态只能修改一次，确定修改为已解决？',
+      content: '点击确定修改消息状态',
       success: function (res) {
         if (res.confirm) {
+          app.globalData.indexLates = false
+          app.globalData.userLatest = false
+          if (that.data.info.state === '未解决'){
+            that.setData({
+              'info.state': '已解决'
+            })
+          }else{
+            that.setData({
+              'info.state': '未解决'
+            })
+          }
+          wx.request({
+            method: "post",
+            url: 'https://172.17.174.142:443/LostAndFound/updateState',
+            header: {
+              'content-Type': 'application/json',
+              'charset': 'UTF - 8'
+            },
+            data: {
+              number: that.data.info.num,
+              state: that.data.info.state
+            },
+            success: function (res) {
+              console.log(app.globalData.indexLates)
+              console.log(res.data);  //data
+            }
+          })
           console.log('用户点击确定')
         } else if (res.cancel) {
           console.log('用户点击取消')
@@ -51,9 +78,16 @@ Page({
       success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          app.globalData.userLatest = false
+          app.globalData.indexLates = false
+          wx.showToast({
+            title: '已删除',
+            icon: 'success',
+            duration: 2000
+          })
           wx.request({
             method: "post",
-            url: 'https://172.25.50.90:443/LostAndFound/delete',
+            url: 'https://172.17.174.142:443/LostAndFound/delete',
             header: {
               'content-Type': 'application/json',
               'charset': 'UTF - 8'
@@ -62,15 +96,9 @@ Page({
               number: that.data.info.num
             },
             success: function (res) {
-              wx.showToast({
-                title: '已删除',
-                icon: 'success',
-                duration: 2000
-              })
-              app.globalData.userLatest=false
-              app.globalData.indexLates = false
-              wx.navigateBack()
+              console.log(app.globalData.indexLates)
               console.log(res.data);  //data
+              wx.navigateBack()
             }
           })
         } else if (res.cancel) {
@@ -129,3 +157,4 @@ Page({
 
   }
 })
+

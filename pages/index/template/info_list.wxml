@@ -14,7 +14,8 @@
         </view>
       </view>
       <view class="list_right">
-        <image class="pic" src="{{item.pic[0]}}"></image>
+        <image wx:if="{{item.pic}}" class="pic" src="{{item.pic}}"></image>
+        <image wx:else class="pic" src="../image/logo.jpg"></image>
       </view>
     </view>
   </block>

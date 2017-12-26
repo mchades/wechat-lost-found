@@ -1,37 +1,40 @@
 {
-  "pages": 
-  [
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/issue/issue",
     "pages/detail/detail",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/notice/notice"
   ],
-  "window": 
-  {
+  "window": {
     "navigationBarBackgroundColor": "#07C62D",
     "navigationBarTitleText": "莫文隋失物招领",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f2f7f3"
   },
-  "tabBar":
-  {
-    "color":"#a9b7b7",
-    "selectorColor":"#11cd6e",
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectorColor": "#11cd6e",
     "borderStyle": "white",
-    "list":
-    [
+    "list": [
       {
-        "selectedIconPath":"pages/image/home2.png",
-        "iconPath":"pages/image/home1.png",
-        "pagePath":"pages/index/index",
-        "text":"首页"
+        "selectedIconPath": "pages/image/home2.png",
+        "iconPath": "pages/image/home1.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
       },
       {
         "selectedIconPath": "pages/image/user2.png",
         "iconPath": "pages/image/user1.png",
         "pagePath": "pages/user/user",
         "text": "个人中心"
+      },
+      {
+        "selectedIconPath": "pages/image/notice.png",
+        "iconPath": "pages/image/notice1.png",
+        "pagePath": "pages/notice/notice",
+        "text": "公告"
       }
     ]
   },

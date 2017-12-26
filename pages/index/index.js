@@ -26,6 +26,12 @@ Page({
         image: '../image/warn.png',
         duration: 1000
       })
+    } else if (app.globalData.role === 'black'){
+      wx.showToast({
+        title: '歇歇吧，被拉黑了',
+        image: '../image/warn.png',
+        duration: 2000
+      })
     } else {
       wx.navigateTo({
         url: '../issue/issue'
@@ -52,7 +58,7 @@ Page({
     var keyword = e.detail.value
     wx.request({
       method: "post",
-      url: 'https://172.25.50.90:443/LostAndFound/search',
+      url: 'https://172.17.174.142:443/LostAndFound/search',
       data: {
         keyword: keyword,
       },
@@ -95,13 +101,18 @@ Page({
       infoList: app.globalData.allInfo
     })
   },
+  //显示页面
   onShow: function () {
-    var that=this
-    if (!app.globalData.indexLatest){
+    console.log(app.globalData.indexLates)
+    console.log(app.globalData.indexLates === false)
+    if (app.globalData.indexLatest === false) {
+      console.log("123")
+      var that = this
       //发起刷新请求
+      wx.showNavigationBarLoading()
       wx.request({
         method: "post",
-        url: 'https://172.25.50.90:443/LostAndFound/returnAll',
+        url: 'https://172.17.174.142:443/LostAndFound/returnAll',
         header: {
           'content-Type': 'application/json',
           'charset': 'UTF - 8'
@@ -109,26 +120,35 @@ Page({
         data: {},
         success: function (res) {
           /* res.data的内容为ok */
+          app.globalData.indexLatest = true
           app.globalData.allInfo = res.data,
             that.setData({
               infoList: res.data
             })
-          console.log(res.data);
-          app.globalData.indexLatest=true
+          console.log(res.data);  //data
+          console.log(app.globalData.allInfo)
+          wx.hideNavigationBarLoading() //完成停止加载
+          wx.stopPullDownRefresh() //停止下拉刷新
+        },
+        fail: function (res) {
+          wx.showToast({
+            title: '网络错误',
+            image: '../image/warn.png'
+          })
+          wx.hideNavigationBarLoading() //完成停止加载
+          wx.stopPullDownRefresh() //停止下拉刷新
         }
       })
     }
-    console.log(this.data.userInfo)
-    console.log(app.globalData.userInfo)
   },
   //下拉刷新
   onPullDownRefresh: function () {
-    var that=this
+    var that = this
     wx.showNavigationBarLoading()
     //发起刷新请求
     wx.request({
       method: "post",
-      url: 'https://172.25.50.90:443/LostAndFound/returnAll',
+      url: 'https://172.17.174.142:443/LostAndFound/returnAll',
       header: {
         'content-Type': 'application/json',
         'charset': 'UTF - 8'
@@ -137,11 +157,20 @@ Page({
       success: function (res) {
         /* res.data的内容为ok */
         app.globalData.allInfo = res.data,
-        that.setData({
-          infoList: res.data
-        })
-          console.log(res.data);  //data
+          that.setData({
+            infoList: res.data
+          })
+        console.log(res.data);  //data
         console.log(app.globalData.allInfo)
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+      },
+      fail:function(res){
+        wx.showToast({
+          title: '网络错误',
+          image:'../image/warn.png'
+        })
+        app.globalData.indexLatest = true
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
       }
